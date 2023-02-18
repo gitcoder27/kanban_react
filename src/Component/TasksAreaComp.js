@@ -11,16 +11,16 @@ export default function TaskAreaComp() {
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <TaskGroupComp tasks={backlogContext.tasks} groupTitle={"Backlog"} />
+          <TaskGroupComp tasks={backlogContext.tasks} group="backlog" groupTitle={"Backlog"} />
         </div>
         <div class="col">
-          <TaskGroupComp tasks={todoContext.tasks} groupTitle={"To Do"} />
+          <TaskGroupComp tasks={todoContext.tasks} group="todo" groupTitle={"To Do"} />
         </div>
         <div class="col">
-          <TaskGroupComp tasks={ongoingContext.tasks} groupTitle={"Ongoing"} />
+          <TaskGroupComp tasks={ongoingContext.tasks} group="ongoing" groupTitle={"Ongoing"} />
         </div>
         <div class="col">
-          <TaskGroupComp tasks={doneContext.tasks} groupTitle={"Done"} />
+          <TaskGroupComp tasks={doneContext.tasks} group="done" groupTitle={"Done"} />
         </div>
       </div>
     </div>
