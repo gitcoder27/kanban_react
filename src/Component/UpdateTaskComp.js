@@ -1,47 +1,47 @@
-import React, { useState } from 'react';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { InputGroup, FormControl, Button } from "react-bootstrap";
 
 export default function UpdateTaskComp() {
-    const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    }
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-    const handleMoveForwardClick = () => {
+  const handleMoveForwardClick = () => {
+    // handle userContext
+    console.log("Input value:", inputValue);
+  };
 
-        // handle userContext
-        console.log('Input value:', inputValue);
-    }
+  const handleMoveBackwardClick = () => {
+    // handle userContext
+    console.log("Input value:", inputValue);
+  };
 
-    const handleMoveBackwardClick = () => {
+  const handleDeleteClick = () => {
+    // handle userContext
+    console.log("Input value:", inputValue);
+  };
 
-        // handle userContext
-        console.log('Input value:', inputValue);
-    }
+  return (
+    <InputGroup className="mb-3">
+      <FormControl
+        placeholder="Selected Task"
+        aria-label="Enter text"
+        value={inputValue}
+        onChange={handleInputChange}
+        disabled={true}
+      />
 
-    const handleDeleteClick = () => {
-
-        // handle userContext
-        console.log('Input value:', inputValue);
-    }
-
-    return (
-        <InputGroup className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-default">
-                Add new task
-            </InputGroup.Text>
-            <FormControl
-                placeholder="Enter text"
-                aria-label="Enter text"
-                value={inputValue}
-                onChange={handleInputChange}
-            />
-
-            <Button variant="primary" onClick={handleMoveForwardClick}>move forward</Button>
-            <Button variant="primary" onClick={handleMoveBackwardClick}>move backward"</Button>
-            <Button variant="primary" onClick={handleDeleteClick}>delete</Button>
-
-        </InputGroup>
-    );
+      <Button variant="primary" onClick={handleMoveForwardClick}>
+        move forward
+      </Button>
+      <Button variant="primary" onClick={handleMoveBackwardClick}>
+        move backward
+      </Button>
+      <Button variant="primary" onClick={handleDeleteClick}>
+        delete
+      </Button>
+    </InputGroup>
+  );
 }
