@@ -15,26 +15,25 @@ export default function UpdateTaskComp() {
     const XuseOngoingContext = useOngoingContext();
     const XuseDoneContext = useDoneContext();
     const taskName = XuseSelectedTaskContext.task.taskName;
-    const groupName = useSelectedTaskContext().task.group;
 
+    
     const groupPostionValue = {
         backlog: [XuseBacklogContext, XuseTodoContext],
         todo: [XuseTodoContext, XuseOngoingContext],
         ongoing: [XuseOngoingContext, XuseDoneContext],
         done: [XuseDoneContext,XuseBacklogContext]
     }
-
+    
     const handleMoveForwardClick = () => {
-
-        //add
+        const groupName = XuseSelectedTaskContext.task.group;
+        
+        // add
         groupPostionValue[groupName][1].setter([...groupPostionValue[groupName][1].tasks, taskName ]);
 
         // remove 
-        groupPostionValue[groupName][0].setter( groupPostionValue[groupName][1].tasks.filter(ele => ele != taskName));
+        groupPostionValue[groupName][0].setter( groupPostionValue[groupName][0].tasks.filter(ele => ele != taskName));
 
-        console.log("DDDDD", Object.keys(groupPostionValue).indexOf(groupName) + 1)
-        XuseSelectedTaskContext().setter({taskName: taskName, groupName: Object.keys(groupPostionValue).indexOf(groupName) + 1  })
-
+        XuseSelectedTaskContext.setter({taskName: taskName, group: Object.keys(groupPostionValue)[Object.keys(groupPostionValue).indexOf(groupName) + 1]  })
 
     };
 
