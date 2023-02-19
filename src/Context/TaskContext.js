@@ -12,14 +12,12 @@ export const useOngoingContext = () => useContext(OngoingList);
 export const useDoneContext = () => useContext(DoneList);
 export const useSelectedTaskContext = () => useContext(SelectedTask);
 
-
-
 export const ContextProvider = ({ children }) => {
   const [backlogList, setBacklogList] = useState([]);
   const [todoList, setTodoList] = useState([]);
   const [ongoingList, setOngoingList] = useState([]);
   const [doneList, setDoneList] = useState([]);
-  const [selectedTaskValue, setSelectedTaskValue] = useState({taskName: "", group: ""});
+  const [selectedTaskValue, setSelectedTaskValue] = useState({ taskName: "", group: "" });
 
   return (
     <BacklogList.Provider value={{ tasks: backlogList, setter: setBacklogList }}>
