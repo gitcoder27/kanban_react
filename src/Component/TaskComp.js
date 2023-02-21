@@ -1,13 +1,17 @@
-import { useSelectedTaskContext } from '../Context/TaskContext';
+import { useDispatch } from "react-redux";
+import { selectedTask } from "../actions/index";
 
 export const TaskComp = (props) => {
-  const a = useSelectedTaskContext()
+  const dispatch = useDispatch();
 
-  const taskClickHandler = () => a.setter({ taskName: props.task, group: props.group });
+  const taskHandler = () => {
+    console.log("i'm here");
+    dispatch(selectedTask(props.task.id));
+  };
 
   return (
-    <div className="task" onClick={taskClickHandler}>
-      <h3>{props.task}</h3>
-    </div >
+    <div className="task" onClick={taskHandler}>
+      <h3>{props.task.taskName}</h3>
+    </div>
   );
 };

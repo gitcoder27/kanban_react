@@ -1,17 +1,22 @@
 import { TaskComp } from "./TaskComp";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export const TaskGroupComp = (props) => {
-  const { groupTitle, tasks, group } = props;
+  const { groupTitle } = props;
+  const group = [];
+  const tasks = useSelector((state) => state.taskReducer);
+  console.log("tasks", tasks);
+  for (let i in tasks) {
+    if (tasks[i].groupName === groupTitle) {
+      group.push(tasks[i]);
+    }
+  }
 
-  useEffect(() => {
-    localStorage.setItem("group", tasks);
-  });
   return (
     <div className="taskGroup">
       <h3>{groupTitle}</h3>
-      {tasks.map((element) => (
-        <TaskComp task={element} group={group} />
+      {group.map((element) => (
+        <TaskComp task={element} />
       ))}
     </div>
   );

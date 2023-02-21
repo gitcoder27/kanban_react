@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
-import { useBacklogContext } from "../Context/TaskContext";
+import { useDispatch } from "react-redux";
+import { addTask } from "../actions/index";
+import uuid from "react-uuid";
+import { Constants } from "../Constant/Constant";
 
 export default function AddTakComp() {
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  const backlogContext = useBacklogContext();
-
   const handleSaveClick = () => {
     // handle userContext
-    backlogContext.setter([...backlogContext.tasks, inputValue]);
+    dispatch(addTask({ id: uuid(), taskName: inputValue, groupName: Constants.group_backlog }));
     setInputValue("");
   };
 
